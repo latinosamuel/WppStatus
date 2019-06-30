@@ -1,9 +1,15 @@
 package com.example.xpandit.wppstatus.ui.activity
 
+import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import br.com.alissontfb.multifilepicker.config.FilePicker
+import br.com.alissontfb.multifilepicker.utils.PARAM_RESULT_ITEMS_PATHS
+import br.com.alissontfb.multifilepicker.utils.REQUEST_CODE_TO_RESULT
+import com.example.xpandit.wppstatus.BuildConfig
 import com.example.xpandit.wppstatus.R
 import com.example.xpandit.wppstatus.data.dao.StatusDao
 import com.example.xpandit.wppstatus.data.model.ObStatus
@@ -56,7 +62,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun callLibGallary() {
+        FilePicker.Builder(this)
+            .maxFiles(1)
+            .showImages(true)
+            .showVideos(false)
+            .showAudios(false)
+            .showFiles(false)
+            .saveImages(false)
+            .saveVideos(false)
+            .saveAudios(false)
+            .setProvider(BuildConfig.APPLICATION_ID +".provider")
+            .setSaveFolder(getString(R.string.app_name))
+            .build()
+    }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && data != null){
+            if (requestCode == REQUEST_CODE_TO_RESULT){
+                val uris = data.getSerializableExtra(PARAM_RESULT_ITEMS_PATHS) as ArrayList<String>
+                for (uri in uris ){
+                    dao.createStatusImage(uri)
+                }
+            }
+        }
     }
 
     override fun onResume() {
