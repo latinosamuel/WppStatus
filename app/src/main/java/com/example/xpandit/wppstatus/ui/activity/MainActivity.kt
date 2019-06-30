@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         adapterRead = ReadStateAdapter(dao.searchReadStatus()){
             showStatus(it)
         }
+        main_read_rec.adapter = adapterRead
     }
 
     private fun updateScreen() {

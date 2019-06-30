@@ -13,12 +13,12 @@ class StatusDao {
         }
 
         private val newStatus = arrayListOf(
-            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/$id.png","", ObUser("user$id")),
-            ObStatus(id,true,false,"","Example with text short", ObUser("user$id")),
-            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/23.png","",ObUser("user$id")),
-            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/597.png","",ObUser("user$id")),
-            ObStatus(id,true,false,"","Example of long text to display on the preview screen", ObUser("user$id")),
-            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/06651.png","", ObUser("user$id"))
+            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/1.png","", ObUser("user1")),
+            ObStatus(id,true,false,"","Example with text short", ObUser("user2")),
+            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/23.png","",ObUser("user3")),
+            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/597.png","",ObUser("user4")),
+            ObStatus(id,true,false,"","Example of long text to display on the preview screen", ObUser("user5")),
+            ObStatus(id,true,false,"https://api.adorable.io/avatars/285/06651.png","", ObUser("user6"))
         )
 
         private val readStatus = ArrayList<ObStatus>()

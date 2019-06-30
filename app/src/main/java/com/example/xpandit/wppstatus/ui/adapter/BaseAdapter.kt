@@ -76,7 +76,7 @@ abstract class BaseAdapter(private val stateList: ArrayList<ObStatus>): Recycler
         if (!status.ehSystem){
             holder.title!!.text = status.user.nome
             holder.subtitle!!.text = sdf.format(status.data)
-            ImageUtil.mountsImage(holder.image!!,status.image,holder.context)
+            ImageUtil.mountsImage(holder.image!!,status.user.image,holder.context)
         }else{
             holder.title!!.text = status.text
         }
