@@ -18,7 +18,7 @@ import kotlin.collections.ArrayList
 
 abstract class BaseAdapter(private val stateList: ArrayList<ObStatus>): RecyclerView.Adapter<BaseAdapter.ViewHolder>() {
 
-    private val sdf = SimpleDateFormat("dd/MM/YYYY", Locale.getDefault())
+    private val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
 
 
     init {
