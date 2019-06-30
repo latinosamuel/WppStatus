@@ -22,7 +22,7 @@ class VisualizationActivity : AppCompatActivity() {
             val obStatus = intent.getSerializableExtra(STATUS) as ObStatus
             if (obStatus.image.isEmpty() && obStatus.text.isNotEmpty()){
                 image_visualization.visibility = View.GONE
-                text_visualization.visibility = View.INVISIBLE
+                text_visualization.visibility = View.VISIBLE
                 text_visualization.text = obStatus.text
             }else{
                 image_visualization.visibility = View.VISIBLE

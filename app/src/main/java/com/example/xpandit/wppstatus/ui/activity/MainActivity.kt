@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
+import android.support.v7.app.AlertDialog
 import android.view.View
+import android.widget.EditText
+import android.widget.Toast
 import br.com.alissontfb.multifilepicker.config.CheckPermissions
 import br.com.alissontfb.multifilepicker.config.FilePicker
 import br.com.alissontfb.multifilepicker.utils.PARAM_RESULT_ITEMS_PATHS
@@ -71,7 +74,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun callDialog() {
-
+        val buider = AlertDialog.Builder(this)
+        val editText = EditText(this)
+        buider.setTitle(getString(R.string.app_name))
+        buider.setMessage("Write a text for your status!")
+        buider.setView(editText)
+        buider.setPositiveButton("OK"){_, _ ->
+            val text = editText.text.toString().trim()
+            if(text.isNotEmpty()){
+                dao.createStatusText(text)
+                onResume()
+            }else{
+                Toast.makeText(this,"Can not create a status with no text !",Toast.LENGTH_SHORT).show()
+            }
+        }
+        buider.setNegativeButton("Cancel",null)
+        val dialog = buider.create()
+        dialog.show()
     }
 
     private fun callCamera() {
